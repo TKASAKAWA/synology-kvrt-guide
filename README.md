@@ -1,5 +1,3 @@
-# synology-kvrt-guide
-How to automate Kaspersky Virus Removal Tool (KVRT) on Synology DSM.
 # How to Use Kaspersky Virus Removal Tool (KVRT) for Linux on Synology DSM
 
 This guide explains how to install and configure Kaspersky Virus Removal Tool (KVRT) for Linux to run automatically on your Synology DiskStation Manager (DSM) in a Command Line Interface (CUI) environment. This allows you to schedule regular virus scans for your NAS without a graphical user interface.
