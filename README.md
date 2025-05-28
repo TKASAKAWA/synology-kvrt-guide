@@ -73,9 +73,9 @@ These commands are intended to be used within the DSM Task Scheduler, executed a
 
 This command scans the entire system. If threats are detected, **no automatic disinfection or quarantine actions will be performed.** Scan results will only be logged and reported. This is the safest method to prevent accidental data loss due to false positives.
 
-```bash
+
 # Clean up KVRT's temporary directory
-rm -rf /opt/kvrt/kvrt_temp
+```rm -rf /opt/kvrt/kvrt_temp```
 
 # Execute KVRT to scan the entire system (detect only, no action)
 # Console output is redirected to /var/log/kvrt.log
