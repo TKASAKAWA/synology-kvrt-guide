@@ -15,34 +15,46 @@ Kaspersky Virus Removal Tool
 for Linux®
 Virus removal helps clean your Linux PC of malware if it has been infected.
 
-
 ### Placing the KVRT File and Granting Execute Permissions
 
 After downloading, transfer the `kvrt.run` file to your Synology NAS and grant it execute permissions. A recommended location is `/opt/kvrt/` as it's accessible but less prone to accidental modification by ordinary users.
 
 1.  **Log in to your NAS via SSH:**
+    From your PC's terminal, use the following command:
+    ```bash
     ssh your_dsm_username@your_dsm_ip_address
+    ```
 
 2.  **Elevate to root privileges:**
     All subsequent operations require root privileges.
+    ```bash
     sudo -i
+    ```
 
 3.  **Create a directory for KVRT:**
+    ```bash
     mkdir -p /opt/kvrt
+    ```
 
 4.  **Transfer the KVRT file to your NAS:**
     Use tools like SCP to transfer `kvrt.run` to `/opt/kvrt/` on your NAS.
+    ```bash
     # Run this from your PC's terminal (you might need to exit SSH session temporarily)
     scp /path/to/local/kvrt.run your_dsm_username@your_dsm_ip_address:/opt/kvrt/
+    ```
     *After transfer, log in via SSH again and elevate to root if you exited.*
 
 5.  **Grant execute permissions:**
+    ```bash
     chmod +x /opt/kvrt/kvrt.run
+    ```
 
 6.  **Create a data directory for KVRT:**
     Create a directory under `/var/log/` where KVRT will store its logs, reports, and quarantined files.
+    ```bash
     mkdir -p /var/log/kvrt_data
     chmod 700 /var/log/kvrt_data # Set appropriate permissions
+    ```
 
 ## 2. KVRT Command-Line Execution Options
 
@@ -59,13 +71,13 @@ These commands are intended to be used within the DSM Task Scheduler, executed a
 
 This command scans the entire system. If threats are detected, **no automatic disinfection or quarantine actions will be performed.** Scan results will only be logged and reported. This is the safest method to prevent accidental data loss due to false positives.
 
+```bash
 # Clean up KVRT's temporary directory
 rm -rf /opt/kvrt/kvrt_temp
 
 # Execute KVRT to scan the entire system (detect only, no action)
 # Console output is redirected to /var/log/kvrt.log
 /opt/kvrt/kvrt.run --target /opt/kvrt/kvrt_temp -- -accepteula -silent -custom / -d /var/log/kvrt_data > /var/log/kvrt.log 2>&1
-
 ### B. Detect and Quarantine (Move to Quarantine): Use with Caution
 
 This command scans the entire system. If threats are detected, they will be **automatically moved to "quarantine."** Quarantined files become inoperable and are moved to `/var/log/kvrt_data/Quarantine/` in an encrypted form. **Deletion is not performed directly, but be aware that quarantining critical system files due to false positives can affect DSM's functionality. Use this option with extreme caution.**
