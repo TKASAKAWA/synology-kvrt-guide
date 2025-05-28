@@ -8,6 +8,14 @@ KVRT for Linux needs to be downloaded from the official Kaspersky website. Typic
 
 **Note:** Direct `wget` links might not be available on the download page. You may need to use a web browser to download the file.
 
+Download Kaspersky Virus Removal Tool application
+@@@@Linux version is hidden below.@@@@
+https://www.kaspersky.com/downloads/free-virus-removal-tool
+Kaspersky Virus Removal Tool
+for Linux®
+Virus removal helps clean your Linux PC of malware if it has been infected.
+
+
 ### Placing the KVRT File and Granting Execute Permissions
 
 After downloading, transfer the `kvrt.run` file to your Synology NAS and grant it execute permissions. A recommended location is `/opt/kvrt/` as it's accessible but less prone to accidental modification by ordinary users.
